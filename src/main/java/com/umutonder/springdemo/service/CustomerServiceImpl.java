@@ -1,24 +1,23 @@
-package com.umutonder.springdemo.dao;
+package com.umutonder.springdemo.service;
 
+import com.umutonder.springdemo.dao.CustomerDAO;
 import com.umutonder.springdemo.entity.Customer;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
-public class CustomerDAOImpl implements CustomerDAO {
+@Service
+public class CustomerServiceImpl implements CustomerService {
     @Autowired
-    private SessionFactory sessionFactory;
+    private CustomerDAO customerDAO;
 
     @Override
+    @Transactional
     public List<Customer> getCustomers() {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Customer", Customer.class).getResultList();
+        return customerDAO.getCustomers();
     }
 }
