@@ -13,7 +13,14 @@
             </div>
         </div>
 
+
+
         <div id = "container">
+
+            <div id="utils">
+                <input class="add-button" type="button" value="Add Customer" onclick="window.location.href='showFormForAdd'; return false;"/>
+            </div>
+
             <div id = "content">
                 <%-- Our Table --%>
                 <table>
