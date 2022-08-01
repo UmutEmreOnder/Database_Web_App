@@ -28,14 +28,22 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email Name</th>
+                        <th>Action</th>
                     </tr>
 
                     <%-- Loop over customer list --%>
                     <c:forEach var="customer" items="${customers}">
                         <tr>
+                            <c:url var="updateLink" value="/customer/showFormForUpdate">
+                                <c:param name="customerId" value="${customer.id}"/>
+                            </c:url>
+
                             <td>${customer.firstName}</td>
                             <td>${customer.lastName}</td>
                             <td>${customer.email}</td>
+                            <td>
+                                <a href="${updateLink}">Update</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
